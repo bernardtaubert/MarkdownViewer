@@ -6,6 +6,10 @@
 - //font及css配置
 - MdView模拟普通的WebBrowser行为，对md文件透明处理；支持后退前进
 
+##2017-01-26
+- Added refresh function F5
+- Markdown View is now default after startup
+
 ##2012-12-16
 - 加入提示对.md/.mkd/.markdown文件关联
 
