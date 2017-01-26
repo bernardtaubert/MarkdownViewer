@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -153,7 +153,10 @@ namespace MarkdownViewer
         {
             saveCurrFile();
         }
-
+        private void refreshMenuItem_Click(object sender, EventArgs e) 
+        {            
+            openFile(_file);        
+        }
         private bool _firstChanged = true; //system invoke
         private void _edit_TextChanged(object sender, EventArgs e)
         {
