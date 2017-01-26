@@ -206,7 +206,7 @@
             this._splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            this.showOrHideEdit();
         }
 
         #endregion
