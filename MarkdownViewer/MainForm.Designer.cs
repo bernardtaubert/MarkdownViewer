@@ -34,6 +34,7 @@
             this.fileNewMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileOpenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSaveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exportHTMLMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -43,6 +44,7 @@
             this._splitContainer = new System.Windows.Forms.SplitContainer();
             this._edit = new System.Windows.Forms.RichTextBox();
             this._view = new MarkdownViewer.MdBrowser();
+            this._view.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(OnPreviewKeyDown);
             this.menuTop.SuspendLayout();
 			//((System.ComponentModel.ISupportInitialize)(this._splitContainer)).BeginInit();
             this._splitContainer.Panel1.SuspendLayout();
@@ -69,6 +71,7 @@
             this.fileNewMenuItem,
             this.fileOpenMenuItem,
             this.fileSaveMenuItem,
+			this.refreshMenuItem,
             this.toolStripSeparator2,
             this.exportHTMLMenuItem,
             this.toolStripSeparator1,
@@ -100,6 +103,14 @@
             this.fileSaveMenuItem.Size = new System.Drawing.Size(136, 22);
             this.fileSaveMenuItem.Text = "&Save";
             this.fileSaveMenuItem.Click += new System.EventHandler(this.fileSaveMenuItem_Click);
+			// 
+            // fileSaveMenuItem
+            // 
+            this.refreshMenuItem.Name = "fileRefreshMenuItem";
+            this.refreshMenuItem.ShortcutKeys = (System.Windows.Forms.Keys)(System.Windows.Forms.Keys.F5);
+            this.refreshMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.refreshMenuItem.Text = "&Refresh";
+            this.refreshMenuItem.Click += new System.EventHandler(this.refreshMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -208,12 +219,16 @@
             this.PerformLayout();
             this.showOrHideEdit();
         }
-
+        private void OnPreviewKeyDown(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e) {
+            if (e.KeyCode == System.Windows.Forms.Keys.F5)
+                openFile(_file);
+        }
         #endregion
 
         private System.Windows.Forms.MenuStrip menuTop;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileOpenMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exportHTMLMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
